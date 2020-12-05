@@ -8,15 +8,17 @@ fun main() {
     val parsed = input.map { (num1, num2, char, pass) ->
         Triple((num1.toInt() to num2.toInt()), char.first(), pass)
     }
-    println(part1(parsed))
-    println(part2(parsed))
+    println(Day2.part1(parsed))
+    println(Day2.part2(parsed))
 }
 
-fun part1(input: List<day2line>) = input.count { (min_max, char, pass) ->
-    pass.count { it == char } in (min_max.first..min_max.second)
-}
+object Day2 {
+    fun part1(input: List<day2line>) = input.count { (min_max, char, pass) ->
+        pass.count { it == char } in (min_max.first..min_max.second)
+    }
 
-fun part2(input: List<day2line>) = input.count { (min_max, char, pass) ->
-    val (f, s) = min_max.toList().map { it - 1 }
-    (pass[f] == char).xor(pass[s] == char)
+    fun part2(input: List<day2line>) = input.count { (min_max, char, pass) ->
+        val (f, s) = min_max.toList().map { it - 1 }
+        (pass[f] == char).xor(pass[s] == char)
+    }
 }
