@@ -14,5 +14,5 @@ object Day5 {
     }.joinToString(separator = "").let { Integer.parseInt(it, 2) }
 
     fun part1(input: SortedSet<Int>) = input.last()
-    fun part2(input: SortedSet<Int>) = input.zip(input.drop(1)).first { (a, b) -> b - a != 1 }.let { it.first + 1 }
+    fun part2(input: SortedSet<Int>) = input.zipWithNext().first { (a, b) -> b - a != 1 }.let { it.first + 1 }
 }
