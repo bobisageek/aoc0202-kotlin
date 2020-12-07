@@ -9,8 +9,9 @@ fun main() {
 }
 
 object Day5 {
+    val lettersToNumber = mapOf('B' to 1, 'R' to 1).withDefault { 0 }
     fun seatNum(seatCode: String) = seatCode.map {
-        mapOf('B' to 1, 'R' to 1).getOrDefault(it, 0)
+        lettersToNumber[it]
     }.joinToString(separator = "").let { Integer.parseInt(it, 2) }
 
     fun part1(input: SortedSet<Int>) = input.last()
